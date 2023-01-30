@@ -1,0 +1,62 @@
+Functional Dependencies:
+
+Tables:
+
+steam-200k
+-----------
+R = (Title, User_ID, Behavior, Playtime)
+
+Nothing is determined by another column, therefore this table is all key.
+
+games
+------
+R = (Rank, Title, Year, Genre, Publisher)
+Rank → Title,Genre,Publisher,Year
+
+This table is in BCNF because we only have one dependency, and it is a key.
+
+sales
+------
+R = (Rank,  Global_Sales, NA_Sales, EU_Sales, JP_Sales, Other_Sales)
+Rank → Global_Sales,NA_Sales,EU_Sales,JP_Sales,Other_Sales 
+
+This table is in BCNF since we only have one dependency, and it is a key.
+
+
+
+Views:
+
+vgsales
+--------
+R = (Rank, Title, Genre, Publisher, Year, Global_Sales, NA_Sales, EU_Sales, JP_Sales, Other_Sales)
+Rank → Title,Genre,Publisher,Year,Global_Sales,NA_Sales,EU_Sales,JP_Sales,Other_Sales 
+
+This view is in BCNF since we only have one dependency, and it is a key.
+
+Unique_Games
+--------------
+R = (Title, Genre, Publisher)
+Title → Genre,Publisher
+
+This view is in BCNF since we only have one dependency, and it is a key.
+
+pc_sales
+-----------
+R = (Title, Genre, Publisher,Year,Global_Sales)
+Title → Genre, Publisher, Year, Global_Sales
+
+
+This view is in BCNF since we only have one dependency, and it is a key.
+
+
+Playtime_Steam
+---------------
+R = (Title, User_ID, Genre, Publisher, Playtime)
+Title → Genre, Publisher  
+Title, User_Id → Genre, Publisher, Playtime
+
+This view is not in BCNF because Title determines Genre and Publisher, but is not a key.
+
+
+
+

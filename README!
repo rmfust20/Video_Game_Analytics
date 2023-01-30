@@ -1,0 +1,27 @@
+This file acts a guide to the files in the repo, with brief descriptions of the files.
+
+
+###DATABASE NAME ON ADA IS final_games_rmust20###
+
+The following is the suggest order of reading through the files:
+
+Functional_Requirements.PDF - This file contains the "business needs" that the database adresses.
+ERD_Tables_Only.pdf - This file contains the ER diagrams for only the 3 tables. I'ts not very exciting, but does provide some context for the more complicating view ERD.
+ERD_Views_Included.pdf - This file contains the ER diagrams with all of the views aside from reduced_publishers
+Video_game_DDL.SQL - This file contains the DDL for the 3 tables in the database, not very exciting since these are basic tables
+Data_Engineering.SQL - This file contains information on how the views were created, the most important views being playtime_steam, unique_games, and pc_sales.
+Schema_Functional_Depndencies.txt - This file contains information on the functional dependencies in the database.
+Queries.SQL - This file contains some of the explaratory analytics that was done through queries.
+Database_final.RMD - This file contains the r code that was used to create the r html document (the html document is far more interesting)
+Database_final_html.txt - This file contains a link to a webpage that is hosting the output from the r code.
+Video Game Analysis Data Report.pdf - This file contains some explanation about the information gained from r such as formatted tables and conclusions.
+Video Game Analytics.pptx - This is the presentation
+
+
+The following are the most interesting files:
+ERD_Views_Included.pdf
+Data_engineering.SQL
+Database_final_html.txt
+Video Game analysis Data Report.pdf
+Video Game Analytics.pptx 
+

@@ -1,0 +1,114 @@
+---
+title: "database_final"
+author: "Robert Fusting"
+date: "12/9/2022"
+output: html_document
+---
+```{r}
+library(tidyverse)
+library(ggiraphExtra)
+```
+
+```{r}
+steam_data = read_csv("playtime_steam.csv")
+```
+
+```{r}
+ggplot(steam_data, aes(x=Genre, y=log(playtime))) + geom_boxplot(fill="steelblue") + labs(x="Genre",y="playtime")
+
+```
+
+```{r}
+# ANOVA in R
+steam_genre = aov(log(playtime)~Genre,data=steam_data)
+summary(steam_genre)
+model.tables(steam_genre, type = "means")
+model.tables(steam_genre, type = "effects")
+```
+
+```{r}
+plot(steam_genre)
+```
+```{r}
+TukeyHSD(steam_genre)
+
+ggHSD( TukeyHSD(steam_genre) , no = 1)
+```
+
+```{r}
+steam_reduced = read_csv("reduced_publishers_steam.csv")
+```
+
+
+```{r}
+ggplot(steam_reduced, aes(x=Publisher, y=log(playtime))) + geom_boxplot(fill="steelblue") + labs(x="Publisher",y="playtime") + theme(axis.text.x=element_text(angle=90, hjust=1))
+
+```
+
+```{r}
+# ANOVA in R
+steam_publisher = aov(log(playtime)~Publisher,data=steam_reduced)
+summary(steam_publisher)
+model.tables(steam_publisher, type = "means")
+model.tables(steam_publisher, type = "effects")
+```
+
+```{r}
+TukeyHSD(steam_publisher)
+
+ggHSD( TukeyHSD(steam_publisher) , no = 1)
+```
+
+
+```{r}
+pc_data = read_csv("pc_sales.csv")
+```
+
+```{r}
+ggplot(pc_data, aes(x=Genre, y= log(Global_Sales))) + geom_boxplot(fill="steelblue") + labs(x="Genre",y="NA_Sales")
+
+```
+
+```{r}
+# ANOVA in R
+pc_data$logSales = log( pc_data$Global_Sales )
+pc_genre = aov(logSales~Genre,data=pc_data)
+summary(pc_genre)
+model.tables(pc_genre, type = "means")
+model.tables(pc_genre, type = "effects")
+```
+
+```{r}
+TukeyHSD(pc_genre)
+
+ggHSD( TukeyHSD(pc_genre) , no = 1)
+```
+
+
+```{r}
+pc_reduced = read_csv("reduced_publishers_pc.csv")
+```
+
+
+
+```{r}
+ggplot(pc_reduced, aes(x=Publisher, y= log(Global_Sales))) + geom_boxplot(fill="steelblue") + labs(x="Publisher",y="NA_Sales") + theme(axis.text.x=element_text(angle=90, hjust=1))
+
+```
+
+```{r}
+# ANOVA in R
+pc_publisher = aov(log(Global_Sales)~Publisher,data=pc_reduced)
+summary(pc_publisher)
+model.tables(pc_publisher, type = "means")
+model.tables(pc_publisher, type = "effects")
+```
+
+```{r}
+TukeyHSD(pc_publisher)
+
+ggHSD( TukeyHSD(pc_genre) , no = 1)
+```
+
+
+
